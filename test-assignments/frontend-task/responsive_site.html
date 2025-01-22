@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Webpage TASK 1 Frontend</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #333;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            margin-top: 50px;
+        }
+        .left-menu {
+            width: 250px;
+            background: #444;
+            color: white;
+            padding: 20px;
+            transition: width 0.3s;
+        }
+        .left-menu.collapsed {
+            width: 20px;
+        }
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            background: #f4f4f4;
+        }
+        .right-panel {
+            width: 250px;
+            background: #ddd;
+            padding: 20px;
+        }
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .menu-toggle {
+            cursor: pointer;
+            margin-bottom: 10px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">This is FIXED Navbar (try scrolling)</div>
+    <div class="container">
+        <div class="left-menu" id="leftMenu">
+            <button onclick="toggleMenu()">&#9776;</button>
+            <span class="menu-toggle", id="internal-menu">
+                <p>Home</p>
+                <p>About Us</p>
+                <p>Contact</p>
+                <p>Careers</p>
+            </span>
+        </div>
+        <div class="main-content">
+            <h1>Main Content Area</h1>
+            <p>This side Gaganrajdeep Singh, a 2021 Btech CSE graduate from Sri Sukhmani Institue of Engineering
+                and Technology currently pursuing Mtech in CSE from PEC and having 2 years of experience as a Software engineer.
+            </p>
+        </div>
+        <div class="right-panel">
+            <h2>Right Panel</h2>
+            <p>This Right panel can hold additional information for me if needed.</p>
+        </div>
+    </div>
+    <div class="footer">Footer Content: Thank you for checking out the assignment</div>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('leftMenu').classList.toggle('collapsed');
+            isVisible = document.getElementById('internal-menu').style.display;
+            if (isVisible != "none") {
+                document.getElementById('internal-menu').style.display = "none"
+            }
+            else {
+                document.getElementById('internal-menu').style.display = "block"
+            }
+        }
+
+        function adjustScreenSize() {
+            const width = window.innerWidth;
+            if (width <= 600) {
+                document.body.style.zoom = "50%";
+            } else if (width > 600 && width <= 700) {
+                document.body.style.zoom = "75%";
+            } else if (width > 700 && width <= 767) {
+                document.body.style.zoom = "80%";
+            } else if (width > 992 && width <= 1600) {
+                document.body.style.zoom = "90%";
+            } else {
+                document.body.style.zoom = "100%";
+            }
+        }
+
+        window.addEventListener('resize', adjustScreenSize);
+        window.addEventListener('load', adjustScreenSize);
+    </script>
+</body>
+</html>
